@@ -1,4 +1,4 @@
-export default class itemService {
+export default class ItemService {
   data = [
     {
       id: 0,

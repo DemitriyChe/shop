@@ -1,9 +1,9 @@
 import React from "react";
 import "./item-list.css";
 
-const Item = () => {
+const Item = ({ item }) => {
   return (
-    <div>
+    <div id="item">
       this is item
     </div>
   )
