@@ -4,8 +4,7 @@ import ErrorBoundary from "../error-indicator";
 
 const HomePage = () => {
   return (
-    <div>
-      This is a home page
+    <div className="container">
       <ErrorBoundary>
         <ItemList/>
       </ErrorBoundary>

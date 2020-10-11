@@ -1,12 +1,25 @@
 import React from "react";
-import './header.css';
+import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
-const Header = () => {
+const Header = ({items, total}) => {
+  let count = 0; items.map((item) => count = count + item.count);
+
   return (
-    <div>
-      This is header
-    </div>
+    <nav className="navbar navbar-light bg-light">
+      <Link className="navbar-brand" to="/">My Shop</Link>
+      <Link to="/cart">
+        {count} items at <i className="cart-icon fa fa-shopping-cart"/> {total}$
+      </Link>
+    </nav>
   )
 };
 
-export default Header;
+const mapStateToProps = ({cart: {cartItems, total}}) => {
+  return {
+    items: cartItems,
+    total
+  }
+};
+
+export default connect(mapStateToProps)(Header);

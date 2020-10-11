@@ -3,7 +3,7 @@ import {Item} from "../item-list";
 
 const ItemPage = () => {
   return (
-    <div>
+    <div className="container">
       This place is for item
       <Item/>
     </div>
