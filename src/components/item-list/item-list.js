@@ -2,9 +2,8 @@ import React from "react";
 import Item from "./item";
 import {compose} from "../../utils";
 import withItemService from "../hoc/with-item-service";
-import {Link} from "react-router-dom";
 import { connect } from "react-redux";
-import fetchItems from "../../actions";
+import {fetchItems, itemAddtoCart} from "../../actions";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator/error-indicator";
 
@@ -13,7 +12,7 @@ class ItemList extends React.Component {
     this.props.fetchItems();
   }
   render() {
-    const {items, loading, error} = this.props;
+    const {items, loading, error, onAddtoCart} = this.props;
     if (loading) {
       return <Spinner/>
     }
@@ -25,13 +24,12 @@ class ItemList extends React.Component {
         {
           items.map((item) => {
             return (
-              <Link to="/" key={item.id} type="button" className="list-group-item list-group-item-action">
-                <Item item={item} />
-              </Link>
+              <div key={item.id} className="list-group-item list-group-item-action">
+                <Item item={item} onAddToCart={() => onAddtoCart(item.id)}/>
+              </div>
             )
           })
         }
-
       </div>
     )
   }
@@ -44,6 +42,7 @@ const mapStateToProps = ({itemList: { items, loading, error }}) => {
 const mapDispatchToProps = (dispatch, { itemService }) => {
   return {
     fetchItems: fetchItems(itemService, dispatch),
+    onAddtoCart: (id) => dispatch(itemAddtoCart(id))
   }
 };
 

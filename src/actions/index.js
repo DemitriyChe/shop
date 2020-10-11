@@ -18,6 +18,27 @@ const itemsError = (error) => {
   }
 };
 
+const itemAddtoCart = (id) => {
+  return {
+    type: "ITEM_ADD",
+    payload: id
+  }
+};
+
+const itemRemoved = (id) => {
+  return {
+    type: "ITEM_REMOVE",
+    payload: id
+  }
+};
+
+const itemDeleted = (id) => {
+  return {
+    type: "ITEM_DELETE",
+    payload: id
+  }
+};
+
 const fetchItems = (itemService, dispatch) => () => {
   dispatch(itemsRequested());
   itemService.getItems()
@@ -25,4 +46,9 @@ const fetchItems = (itemService, dispatch) => () => {
     .catch((error) => dispatch(itemsError(error)))
 };
 
-export default fetchItems;
+export {
+  fetchItems,
+  itemAddtoCart,
+  itemDeleted,
+  itemRemoved
+};

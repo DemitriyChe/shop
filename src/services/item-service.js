@@ -66,13 +66,25 @@ export default class ItemService {
     }
   ];
 
+  _transformItems = (item) => {
+    return {
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      sdescription: item.sdescription,
+      ldescription: item.ldescription,
+      image: item.image,
+      isliked: false
+    }
+  };
+
   getItems() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.random() > 0.7) {
           reject(new Error('Something bad happened'));
         } else {
-          resolve(this.data);
+          resolve(this.data.map(this._transformItems));
         }
       }, 700)
     })
