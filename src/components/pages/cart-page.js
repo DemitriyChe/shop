@@ -2,21 +2,18 @@ import React from "react";
 import {connect} from "react-redux";
 import { itemAddtoCart, itemRemoved, itemDeleted } from "../../actions";
 
-const CartPage = (props) => {
-  const { items, total } = props;
-  console.log(props);
-
+const CartPage = ({ items, total, itemAddtoCart, itemRemoved, itemDeleted }) => {
   const renderRow = (item, idx) => {
     return (
       <tr key={item.id}>
         <td>{idx+1}</td>
-        <td>{item.name}</td>
+        <td>{item.name} {item.id}</td>
         <td>{item.count}</td>
         <td>${item.total}</td>
         <td>
-          <button className="brn"><i className="fas fa-plus"/></button>
-          <button className="brn"><i className="fas fa-minus"/></button>
-          <button className="brn"><i className="fas fa-trash"/></button>
+          <button className="btn" type="button" onClick={() => itemAddtoCart(item.id)}><i className="fas fa-plus"/></button>
+          <button className="btn" type="button" onClick={() => itemRemoved(item.id)}><i className="fas fa-minus"/></button>
+          <button className="btn" type="button" onClick={() => itemDeleted(item.id)}><i className="fas fa-trash"/></button>
         </td>
       </tr>
     )

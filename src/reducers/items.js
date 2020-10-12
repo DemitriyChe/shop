@@ -25,9 +25,27 @@ const updateItemList = (state, action) => {
         loading: false,
         error: action.payload
       };
+    case 'ITEM_LIKED':
+      return {
+        items: updateItem(state, action.payload),
+        loading: false,
+        error: null
+      };
     default:
       return state.itemList;
   }
+};
+
+const updateItem = (state, itemId) => {
+  const { itemList: {items} } = state;
+  const idx = items.findIndex(({id}) => id === itemId);
+  const newItem = items[idx];
+  newItem.isliked = !newItem.isliked;
+  return [
+    ...items.slice(0, idx),
+    newItem,
+    ...items.slice(idx + 1)
+  ];
 };
 
 export default updateItemList;

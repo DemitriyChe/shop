@@ -1,13 +1,13 @@
 import React from "react";
-import {Item} from "../item-list";
+import { withRouter } from "react-router-dom";
+import ItemList from "../item-list/item-list";
 
-const ItemPage = () => {
+const ItemPage = ({ itemId }) => {
   return (
     <div className="container">
-      This place is for item
-      <Item/>
+      <ItemList itemId={itemId}/>
     </div>
   )
 };
 
-export default ItemPage;
+export default withRouter(ItemPage);

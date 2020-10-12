@@ -39,6 +39,13 @@ const itemDeleted = (id) => {
   }
 };
 
+const itemLiked = (id) => {
+  return {
+    type: "ITEM_LIKED",
+    payload: id
+  }
+};
+
 const fetchItems = (itemService, dispatch) => () => {
   dispatch(itemsRequested());
   itemService.getItems()
@@ -50,5 +57,6 @@ export {
   fetchItems,
   itemAddtoCart,
   itemDeleted,
-  itemRemoved
+  itemRemoved,
+  itemLiked
 };
