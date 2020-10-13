@@ -6,3 +6,4 @@
 6. Add "like", "add to cart" buttons. Fill cart store and cart page with added items.
 7. Fill view page for item. Moved loading of data to App component. Make "likes" and cart work. 
 8. Add liked/all filter to main page. Add "order" button and show thanks page.
+9. Fixed a big with filter. Made a production build

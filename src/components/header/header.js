@@ -16,10 +16,15 @@ const Header = (props) => {
       .innerHTML = like ? "Show liked items " : 'Show all items ';
     document.getElementById("btn-like-head")
       .appendChild(like ? likeD : likeAll );
-    const els = !like ? document.getElementsByClassName("item-false")
+    let els = !like ? document.getElementsByClassName("item-false")
       : document.getElementsByClassName("d-none");
     for (let i = 0; i < els.length; i++) {
-      !like ? els[i].classList.add("d-none") : els[1].classList.remove("d-none");
+      !like ? els[i].classList.add("d-none") : els[i].classList.remove("d-none");
+    }
+    els = !like ? document.getElementsByClassName("item-false")
+      : document.getElementsByClassName("d-none");
+    for (let i = 0; i < els.length; i++) {
+      !like ? els[i].classList.add("d-none") : els[i].classList.remove("d-none");
     }
     return !like;
   };
