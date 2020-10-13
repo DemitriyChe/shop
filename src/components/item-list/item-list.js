@@ -25,7 +25,7 @@ const ItemList = (props) => {
           {
             items.map((item) => {
               return (
-                <div key={item.id} className="list-group-item list-group-item-action">
+                <div key={item.id} className={"list-group-item list-group-item-action item-"+item.isliked}>
                   <Item item={item} />
                 </div>
               )

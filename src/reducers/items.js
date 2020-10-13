@@ -43,7 +43,7 @@ const updateItem = (state, itemId) => {
   newItem.isliked = !newItem.isliked;
   return [
     ...items.slice(0, idx),
-    newItem,
+    Object.assign({}, newItem),
     ...items.slice(idx + 1)
   ];
 };

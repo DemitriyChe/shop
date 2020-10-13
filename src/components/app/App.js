@@ -15,16 +15,17 @@ class App extends React.Component {
     return (
       <main role="main">
         <Router>
-          <Header/>
           <Switch>
-            <Route path="/" component={HomePage} exact />
-            <Route path="/thanks" component={ThanksPage} exact />
-            <Route path="/cart" component={CartPage} exact />
-            <Route path="/item/:id"
-                   render={({match}) => {
-                     return <ItemPage itemId={match.params.id}/>
-                   }} />
-            <Route render={() => (<div className="container"><h2>404 Page not found</h2></div>)} />
+            <Route path="/" exact render={
+              (route) => (<div><Header route={route}/><HomePage/></div>)}/>
+            <Route path="/thanks" exact render={
+              (route) => (<div><Header/><ThanksPage route={route}/></div>)}/>
+            <Route path="/cart" exact render={
+              () => (<div><Header/><CartPage/></div>)}/>
+            <Route path="/item/:id" render={
+              ({match}) => (<div><Header/><ItemPage itemId={match.params.id}/></div>)} />
+            <Route render={() =>
+              (<div><Header/><div className="container"><h2>404 Page not found</h2></div></div>)} />
           </Switch>
         </Router>
       </main>

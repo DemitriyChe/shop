@@ -39,6 +39,12 @@ const itemDeleted = (id) => {
   }
 };
 
+const clearCart = () => {
+  return {
+    type: "CLEAR_CART"
+  }
+};
+
 const itemLiked = (id) => {
   return {
     type: "ITEM_LIKED",
@@ -58,5 +64,6 @@ export {
   itemAddtoCart,
   itemDeleted,
   itemRemoved,
-  itemLiked
+  itemLiked,
+  clearCart
 };

@@ -11,8 +11,13 @@ const updateCart = (state, action) => {
     case 'ITEM_REMOVE':
       return updateOrder(state, action.payload, -1);
     case 'ITEM_DELETE':
-      const item = state.cart.cartItems.find(({id}) => id === action.payload);
-      return updateOrder(state, action.payload, -item.count);
+        const item = state.cart.cartItems.find(({id}) => id === action.payload);
+        return updateOrder(state, action.payload, -item.count);
+    case "CLEAR_CART":
+      return {
+        cartItems: [],
+        total: 0
+      };
     default:
       return state.cart
   }
@@ -42,7 +47,8 @@ const updateCartItem = (item, oldItem, step) => {
       id: item.id,
       name: item.name,
       count: 1,
-      total: item.price
+      total: item.price,
+      image: item.image
     }
   }
 };
